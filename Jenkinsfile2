@@ -25,14 +25,14 @@ pipeline {
 	}
     stage('Docker Image Creation') {
         steps {
-	sh 'docker build -t cbabu85/insureapp:latest .'
+	sh 'docker build -t anantalakshmi29/insureapp:latest .'
         }
       }
     stage('Push Image to DockerHub') {
       steps {
      withCredentials([usernamePassword(credentialsId: 'docker-hub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
       sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-      sh 'docker push cbabu85/insureapp:latest'
+      sh 'docker push anantalakshmi29/insureapp:latest'
       }
       }
       }
